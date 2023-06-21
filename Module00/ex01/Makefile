@@ -6,18 +6,18 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/06/10 19:35:24 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/06/19 21:02:38 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= PhoneBook
+NAME			= Phone
 
 SRCS			= ./PhoneBook.cpp ./Contact.cpp ./main.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
 CPP				= g++
-FLAGS			= -Wall -Wextra -Werror -std=c++98
+FLAGS			=  -std=c++98
 RM				= rm -f
 
 %.o: %.cpp
