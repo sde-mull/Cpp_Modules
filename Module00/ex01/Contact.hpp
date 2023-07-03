@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:34 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/21 13:41:13 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:54:33 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 #include <iostream>
+#include <string>
 #define BLACK		"\033[30m"
 #define RED			"\033[31m"
 #define GREEN		"\033[32m"
@@ -45,6 +46,14 @@ class Contact
 	public:
 		Contact();
 		~Contact();
+
+		std::string	ask_information(const std::string& question);
+		void		ask_first_name(std::string first_name);
+		void		ask_last_name(std::string last_name);
+		void		ask_nickname(std::string nickname);
+		void		ask_phone_number(std::string phone_number);
+		void		ask_darkest_secret(std::string darkest_secret);
+		void		print_info();
 };
 
 #endif

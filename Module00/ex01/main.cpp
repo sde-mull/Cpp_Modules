@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:47:14 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/21 22:41:58 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/03 22:48:14 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@ int main(void)
 	while (1)
 	{
 		book.Menu();
-		std::cin >> choices;
+		std::getline(std::cin, choices);
 		if (!choices.compare("ADD"))
-			std::cout << "Good choice\n" << std::endl;
+			book.Add();
 		else if (!choices.compare("SEARCH"))
 			std::cout << "Another good choice\n" << std::endl;
 		else if (!choices.compare("EXIT"))
 			break;
 		else
 			std::cout << B_RED "Wrong option try again!" RESET << std::endl;
-		std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << std::flush;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:18 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/06/19 21:05:09 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/06/21 23:15:47 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PhoneBook
 	public:
 		PhoneBook();
 		void Menu(void);
+		void Add(void);
 		~PhoneBook();
 };
 
