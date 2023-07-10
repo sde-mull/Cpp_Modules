@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:25 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/10 19:50:32 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/10 20:30:08 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,28 @@ void Contact::ask_darkest_secret(std::string darkest_secret)
 std::string Contact::ask_information(const std::string& question)
 {
     std::string str;
+	size_t start;
+	size_t end;
 
     std::cout << B_CYAN << question << RESET;
     while (true)
     {
         std::getline(std::cin, str);
-		// if (!str.compare("EXIT"))
-		// 	exit(0);
+        // if (!str.compare("EXIT"))
+        //     exit(0);
         if (!str.empty())
-            break;
+        {
+            start = str.find_first_not_of(' ');
+            end = str.find_last_not_of(' ');
+
+            if (start != std::string::npos && end != std::string::npos)
+                str = str.substr(start, end - start + 1);
+            else
+                str = "";
+
+            if (!str.empty())
+                break;
+        }
         std::cout << YELLOW "This field cannot be empty. Please enter a value." RESET << std::endl;
         std::cout << B_CYAN << question << RESET;
         std::cout << std::flush;
@@ -66,13 +79,15 @@ std::string Contact::ask_information(const std::string& question)
     return str;
 }
 
+
+
 void Contact::print_info(void)
 {
-	std::cout << B_MAGENTA "[First Name]: " RESET << _first_name << std::endl;
-	std::cout << B_MAGENTA "[Last Name]: " RESET << _last_name << std::endl;
-	std::cout << B_MAGENTA "[Nickname]: " RESET << _nickname << std::endl;
-	std::cout << B_MAGENTA "[Phone Number]: " RESET << _phone_number << std::endl;
-	std::cout << B_MAGENTA "[Darkest Secret]: " RESET << _darkest_secret << std::endl;
+	std::cout << B_MAGENTA "[First Name]: " B_CYAN << _first_name << RESET << std::endl;
+	std::cout << B_MAGENTA "[Last Name]: " B_CYAN << _last_name << RESET << std::endl;
+	std::cout << B_MAGENTA "[Nickname]: " B_CYAN << _nickname << RESET << std::endl;
+	std::cout << B_MAGENTA "[Phone Number]: " B_CYAN << _phone_number << RESET << std::endl;
+	std::cout << B_MAGENTA "[Darkest Secret]: " B_CYAN << _darkest_secret << RESET <<std::endl;
 }
 
 std::string Contact::get_first_name(void)
