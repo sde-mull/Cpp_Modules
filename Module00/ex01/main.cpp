@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:47:14 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/03 22:48:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:19:58 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(void)
 		if (!choices.compare("ADD"))
 			book.Add();
 		else if (!choices.compare("SEARCH"))
-			std::cout << "Another good choice\n" << std::endl;
+			book.Search();
 		else if (!choices.compare("EXIT"))
 			break;
 		else

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:25 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/03 22:36:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:50:32 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ std::string Contact::ask_information(const std::string& question)
     while (true)
     {
         std::getline(std::cin, str);
+		// if (!str.compare("EXIT"))
+		// 	exit(0);
         if (!str.empty())
             break;
         std::cout << YELLOW "This field cannot be empty. Please enter a value." RESET << std::endl;
@@ -66,9 +68,34 @@ std::string Contact::ask_information(const std::string& question)
 
 void Contact::print_info(void)
 {
-	std::cout << B_MAGENTA "This is the first_name of this contact list: " RESET << _first_name << std::endl;
-	std::cout << B_MAGENTA "This is the last name of this contact list: " RESET << _last_name << std::endl;
-	std::cout << B_MAGENTA "This is the nickname of this contact list: " RESET << _nickname << std::endl;
-	std::cout << B_MAGENTA "This is the phone number of this contact list: " RESET << _phone_number << std::endl;
-	std::cout << B_MAGENTA "This is the darkest secret of this contact list: " RESET << _darkest_secret << std::endl;
+	std::cout << B_MAGENTA "[First Name]: " RESET << _first_name << std::endl;
+	std::cout << B_MAGENTA "[Last Name]: " RESET << _last_name << std::endl;
+	std::cout << B_MAGENTA "[Nickname]: " RESET << _nickname << std::endl;
+	std::cout << B_MAGENTA "[Phone Number]: " RESET << _phone_number << std::endl;
+	std::cout << B_MAGENTA "[Darkest Secret]: " RESET << _darkest_secret << std::endl;
+}
+
+std::string Contact::get_first_name(void)
+{
+	return (_first_name);
+}
+
+std::string Contact::get_last_name(void)
+{
+	return (_last_name);
+}
+
+std::string Contact::get_nickname(void)
+{
+	return (_nickname);
+}
+
+std::string Contact::get_phonenumber(void)
+{
+	return (_phone_number);
+}
+
+std::string Contact::get_darkest_scret(void)
+{
+	return (_darkest_secret);
 }

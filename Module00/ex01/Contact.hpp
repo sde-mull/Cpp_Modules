@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:34 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/03 19:54:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:46:04 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ class Contact
 		void		ask_nickname(std::string nickname);
 		void		ask_phone_number(std::string phone_number);
 		void		ask_darkest_secret(std::string darkest_secret);
+		std::string get_first_name(void);
+		std::string get_last_name(void);
+		std::string get_nickname(void);
+		std::string get_phonenumber(void);
+		std::string get_darkest_scret(void);
 		void		print_info();
 };
 
