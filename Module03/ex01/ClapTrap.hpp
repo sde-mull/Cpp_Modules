@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.hpp                                         :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 15:59:57 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/08/30 16:44:13 by sde-mull         ###   ########.fr       */
+/*   Created: 2023/08/11 19:09:05 by sde-mull          #+#    #+#             */
+/*   Updated: 2023/09/07 19:32:01 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 #include <iostream>
 #include <string>
@@ -36,17 +36,31 @@
 #define B_WHITE		"\033[1;37m"
 #define RESET		"\033[0m"
 
-class Zombie
+class ClapTrap
 {
 	private:
-		std::string name;
+		std::string  	_name;
+		int 			_hitPoints;
+		int 			_energyPoints;
+		unsigned int 	_attackDamage;
+		
 	public:
-		Zombie(std::string name);
-		void announce(void);
-		~Zombie();
-};
+		ClapTrap();
+		~ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(ClapTrap const & src);
+        ClapTrap & operator=(ClapTrap const & rhs);
 
-Zombie *newZombie(std::string name);
-void	randomChump(std::string name);
+		void 			attack(const std::string& target);
+		void 			takeDamage(unsigned int amount);
+		void 			beRepaired(unsigned int amount);
+		void 			stats(void);
+		void 			get_weapon(unsigned int amount);
+		unsigned int 	get_attack_damage(void) const;
+		int				get_energy_points(void) const;
+		int				get_hit_points(void) const;
+		std::string		get_name(void) const;
+		void			setAttributes(std::string name,  int hitPoints, int energyPoints, unsigned int atackDamage);
+};
 
 #endif
