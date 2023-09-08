@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/07 19:57:00 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:17:49 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ class ClapTrap
 		int				get_hit_points(void) const;
 		std::string		get_name(void) const;
 		void			setAttributes(std::string name,  int hitPoints, int energyPoints, unsigned int atackDamage);
+		int				death(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:44:04 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 16:53:47 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:25:51 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 FragTrap::FragTrap(void): ClapTrap()
 {
-    std::cout << "FragTrap " << B_GREEN " default was summoned" RESET << std::endl;
+    std::cout << "FragTrap " << B_MAGENTA << this->get_name() << B_GREEN " default high-five" RESET << std::endl;
 	this->setAttributes(this->get_name(), 100, 100, 30);
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-    std::cout << "FragTrap "  << B_MAGENTA << this->get_name() << B_GREEN " Parametric was summoned" RESET << std::endl;
+    std::cout << "FragTrap " << B_MAGENTA << this->get_name() << B_GREEN " parametric high-five" RESET << std::endl;
 	this->setAttributes(this->get_name(), 100, 100, 30);
 }
 
@@ -30,7 +30,7 @@ FragTrap::FragTrap( FragTrap const & src): ClapTrap(src)
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "FragTrap "  << B_MAGENTA << this->get_name() << B_YELLOW " Said no more high-five" RESET << std::endl;
+    std::cout << "FragTrap " << B_MAGENTA << this->get_name() << B_YELLOW " Said no more high-five" RESET << std::endl;
 }
 
 FragTrap & FragTrap::operator=(FragTrap const & rhs)

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:41 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/07 16:19:07 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:14:23 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 ClapTrap::ClapTrap(void) : _name(""), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << B_GREEN "Nameless god summoned" RESET << std::endl;
+	std::cout << "ClapTrap" << B_GREEN " default summon" RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << B_MAGENTA << name << B_GREEN " summoned to the realm" RESET << std::endl;
+	std::cout << "ClapTrap " << B_MAGENTA << name << B_GREEN " parametric summon 🏴‍☠️" RESET << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << B_MAGENTA << this->_name << B_RED " returned to Mount Olympus" RESET << std::endl;
+	std::cout << "ClapTrap" << B_MAGENTA << this->_name << B_RED " was defeated 💀" RESET << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const & src)
@@ -129,4 +129,10 @@ void    ClapTrap::beRepaired(unsigned int amount)
     }
     this->_hitPoints += amount;
     this->_energyPoints -= 1;
+    std::cout << B_MAGENTA << this->_name << B_GREEN " recovered " << amount << " of HP 🥤" RESET << std::endl;
+}
+
+std::string ClapTrap::get_name(void) const
+{
+    return (this->_name);
 }

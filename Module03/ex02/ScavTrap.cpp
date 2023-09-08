@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:24:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/07 19:50:37 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:18:54 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(void): ClapTrap()
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
-    std::cout << B_MAGENTA << this->get_name() << B_GREEN " protection was summoned!" RESET << std::endl;
+    std::cout << "ScavTrap " << B_MAGENTA << this->get_name() << B_GREEN " parametric protection was summoned!" RESET << std::endl;
 	this->setAttributes(this->get_name(), 100, 50, 20);
 }
 
@@ -30,7 +30,7 @@ ScavTrap::ScavTrap( ScavTrap const & src): ClapTrap(src)
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << B_MAGENTA << this->get_name() << B_YELLOW " Protection is off" RESET << std::endl;
+    std::cout << "ScavTrap " << B_MAGENTA << this->get_name() << B_YELLOW " protection is off" RESET << std::endl;
 }
 
 ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)

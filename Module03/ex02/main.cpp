@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/07 20:01:55 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:20:55 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,83 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
+void	options(unsigned int player)
+{
+	std::cout << B_MAGENTA "                     Player: " << player + 1 << RESET << std::endl;
+	std::cout << B_WHITE "|-------------------------------------------------|" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|   1. Attack                   2.Repair          |" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|   3. Status                   4.Exit            |" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|-------------------------------------------------|" RESET << std::endl;
+	std::cout << std::endl;
+	std::cout << B_BLUE "Enter the number: " RESET;
+}
+
 int main(void)
 {	
-	ClapTrap summoner_1("ZEUS");
-	ScavTrap summoner_2("POSEIDON");
-	FragTrap summoner_3("ARTEMIS");
+	system("clear");
+	FragTrap player1("Monkey D. Luffy");
+    ScavTrap player2("Roronoa Zoro");
+	std::string choices;
+	unsigned int index;
+	unsigned int player;
 
-	summoner_1.stats();
-	summoner_2.stats();
-	summoner_3.stats();
-
-	if (summoner_1.get_energy_points() > 0 && summoner_2.get_hit_points() > 0)
+	player = 0;
+	player2.guardGate();
+	player1.highFivesGuys();
+	while (player != 3)
 	{
-		summoner_1.attack("POSEIDON");
-		summoner_2.takeDamage(summoner_1.get_attack_damage());
+		if (player == 2)
+			player = 0;
+		if (!player1.death() || !player2.death())
+			break ;
+		options(player);
+		std::getline(std::cin, choices);
+		if (choices.find_first_not_of("0123456789") == std::string::npos)
+		{
+			index = std::stoi(choices);
+			if (index > 0 && index < 5)
+			{
+				if (index == 1)
+				{
+					if (player == 0)
+					{
+						player1.attack("Roronoa Zoro");
+						player2.takeDamage(player1.get_attack_damage());
+					}
+					else
+					{
+						player2.attack("Monkey D. Luffy");
+						player1.takeDamage(player2.get_attack_damage());
+					}
+					player++;
+				}
+				else if (index == 2)
+				{
+					if (player == 0)
+						player1.beRepaired(2);
+					else
+						player2.beRepaired(2);
+					player++;
+				}
+				else if (index == 3)
+				{
+					if (player == 0)
+						player1.stats();
+					else
+						player2.stats();
+				}
+				else if (index == 4)
+					player = 3;
+			}
+			else
+				std::cout << B_YELLOW "Wrong input, it must be an integer between 1 and 4" RESET << std::endl; 
+		}
+		else
+			std::cout << B_YELLOW "Wrong input, it must be an integer between 1 and 4" RESET << std::endl; 
+		std::cout << std::flush;
 	}
-	else
-		std::cout << B_YELLOW "Summoner_1 is out of energy or summoner_2 doesnt have any hp left" RESET << std::endl;
-
-
-	summoner_1.stats();
-	summoner_2.stats();
-	summoner_3.stats();
-	
-	summoner_2.guardGate();
-
-	if (summoner_1.get_energy_points() > 0 && summoner_2.get_hit_points() > 0)
-	{
-		summoner_1.attack("POSEIDON");
-		summoner_2.takeDamage(summoner_1.get_attack_damage());
-	}
-	else
-		std::cout << B_YELLOW "Summoner_1 is out of energy or summoner_2 doesnt have any hp left" RESET << std::endl;
-	
-	summoner_1.stats();
-	summoner_2.stats();
-	summoner_3.stats();
-
-	summoner_2.beRepaired(2);
-	summoner_2.beRepaired(2);
-
-	summoner_3.highFivesGuys();
-
-	summoner_1.stats();
-	summoner_2.stats();
-	summoner_3.stats();
-
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 16:50:48 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:47:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,83 @@
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
+void	options(unsigned int player)
+{
+	std::cout << B_MAGENTA "                     Player: " << player + 1 << RESET << std::endl;
+	std::cout << B_WHITE "|-------------------------------------------------|" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|   1. Attack                   2.Repair          |" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|   3. Status                   4.Exit            |" RESET << std::endl;
+	std::cout << B_WHITE "|                                                 |" RESET << std::endl;
+	std::cout << B_WHITE "|-------------------------------------------------|" RESET << std::endl;
+	std::cout << std::endl;
+	std::cout << B_BLUE "Enter the number: " RESET;
+}
+
 int main(void)
 {	
-	FragTrap player1("Super_Gustavo");
-    ScavTrap player2("Super_FelisBerto");
-    DiamondTrap player3("GOKU");
+	system("clear");
+    ScavTrap player2("Roronoa Zoro");
+	DiamondTrap player1("Monkey D. Luffy");
+	std::string choices;
+	unsigned int index;
+	unsigned int player;
 
-    std::cout << std::endl;
-    player3.whoAmI();
-
-    std::cout << std::endl << "Turn 1:" << std::endl << std::endl;
-    player3.highFivesGuys();
-    player1.highFivesGuys();
-    player2.guardGate();
-    player3.guardGate();
-
-    std::cout << std::endl << "Turn 2:" << std::endl << std::endl;
-    player3.attack(player1.get_name());
-    player1.takeDamage(player3.get_attack_damage());
-    player2.attack(player3.get_name());
-    player3.takeDamage(player2.get_attack_damage());
-    player1.attack(player3.get_name());
-    player3.takeDamage(player1.get_attack_damage());
-
-    std::cout << std::endl << "Turn 3:" << std::endl << std::endl;
-    player3.attack(player1.get_name());
-    player1.takeDamage(player3.get_attack_damage());
-    player2.attack(player3.get_name());
-    player3.takeDamage(player2.get_attack_damage());
-    player1.attack(player3.get_name());
-    player3.takeDamage(player1.get_attack_damage());
-
-    std::cout << std::endl << "Turn 4:" << std::endl << std::endl;
-    player1.attack(player2.get_name());
-    player2.takeDamage(player1.get_attack_damage());
-    player2.attack(player1.get_name());
-    player1.takeDamage(player2.get_attack_damage());
-
-    std::cout << std::endl << player2.get_name() << " is the Winner!" << std::endl << std::endl;
-
+	player = 0;
+	player2.guardGate();
+	player1.whoAmI();
+	while (player != 3)
+	{
+		if (player == 2)
+			player = 0;
+		if (!player1.death() || !player2.death())
+			break ;
+		options(player);
+		std::getline(std::cin, choices);
+		if (choices.find_first_not_of("0123456789") == std::string::npos)
+		{
+			index = std::stoi(choices);
+			if (index > 0 && index < 5)
+			{
+				if (index == 1)
+				{
+					if (player == 0)
+					{
+						player1.attack("Roronoa Zoro");
+						player2.takeDamage(player1.get_attack_damage());
+					}
+					else
+					{
+						player2.attack("Monkey D. Luffy");
+						player1.takeDamage(player2.get_attack_damage());
+					}
+					player++;
+				}
+				else if (index == 2)
+				{
+					if (player == 0)
+						player1.beRepaired(2);
+					else
+						player2.beRepaired(2);
+					player++;
+				}
+				else if (index == 3)
+				{
+					if (player == 0)
+						player1.stats();
+					else
+						player2.stats();
+				}
+				else if (index == 4)
+					player = 3;
+			}
+			else
+				std::cout << B_YELLOW "Wrong input, it must be an integer between 1 and 4" RESET << std::endl; 
+		}
+		else
+			std::cout << B_YELLOW "Wrong input, it must be an integer between 1 and 4" RESET << std::endl; 
+		std::cout << std::flush;
+	}
 	return (0);
 }
