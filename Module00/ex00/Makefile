@@ -6,13 +6,13 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:26:20 by sde-mull          #+#    #+#              #
-#    Updated: 2023/06/10 19:32:47 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/22 16:33:08 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= megaphone
 
-SRCS			= megaphone.cpp
+SRCS			= ./megaphone.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 

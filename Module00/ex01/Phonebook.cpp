@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:02 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/10 20:02:21 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:32:26 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 PhoneBook::PhoneBook(void)
 {
-	current_index = 0;
-	max_index = 0;
-	std::cout << GREEN"Phonebook constructor called"RESET << std::endl;
+	this->current_index = 0;
+	this->max_index = 0;
+	std::cout << GREEN "Phonebook constructor called " RESET << std::endl;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << YELLOW"Phonebook destructor called"RESET << std::endl;
+	std::cout << YELLOW "Phonebook destructor called " RESET << std::endl;
 }
 
 void	PhoneBook::Menu(void)
@@ -57,11 +57,11 @@ void	PhoneBook::Add(void)
 	tmp.ask_phone_number(str);
 	str = tmp.ask_information("Darkest Secret: ");
 	tmp.ask_darkest_secret(str);
-	contacts[current_index] = tmp;
-	current_index++;
+	contacts[this->current_index] = tmp;
+	this->current_index++;
 	check_max_index();
-	if (current_index == 8)
-		current_index = 0;
+	if (this->current_index == 8)
+		this->current_index = 0;
 }
 
 void	truncate_words(const std::string& str)
@@ -93,7 +93,7 @@ void	truncate_words(const std::string& str)
 void	PhoneBook::Search(void)
 {
 	unsigned int 	prints;
-	int				index;
+	unsigned int	index;
 	std::string		choices;
 
 	prints = 0;
@@ -112,12 +112,12 @@ void	PhoneBook::Search(void)
 	std::cout << BLUE "/*          *          *          *          *\\" RESET << std::endl;
 	std::cout << BLUE "/*********************************************\\" RESET << std::endl;
 
-	while (prints < max_index)
+	while (prints < this->max_index)
 	{
 		std::cout << BLUE "/*         " B_CYAN << prints + 1 << RESET;
-		truncate_words(contacts[prints].get_first_name());
-		truncate_words(contacts[prints].get_last_name());
-		truncate_words(contacts[prints].get_nickname());
+		truncate_words(this->contacts[prints].get_first_name());
+		truncate_words(this->contacts[prints].get_last_name());
+		truncate_words(this->contacts[prints].get_nickname());
 		std::cout << BLUE "*\\" RESET << std::endl;
 		std::cout << BLUE "/*********************************************\\" RESET << std::endl;
 		prints++;
@@ -135,13 +135,13 @@ void	PhoneBook::Search(void)
 		if (choices.find_first_not_of("0123456789") == std::string::npos)
 		{
 			index = std::stoi(choices);
-			if (index > max_index || index <= 0)
+			if (index > this->max_index || index <= 0)
 			{
 				std::cout << YELLOW "The index must exist" RESET << std::endl;
 				continue ;
 			}
 			std::cout << B_MAGENTA "[Index]: " B_CYAN << index << RESET <<std::endl;
-			contacts[index - 1].print_info();
+			this->contacts[index - 1].print_info();
 		}
 		else
 			std::cout << YELLOW "It must be an index" RESET << std::endl;
@@ -151,6 +151,6 @@ void	PhoneBook::Search(void)
 
 void PhoneBook::check_max_index(void)
 {
-	if (current_index > max_index)
-		max_index = current_index;
+	if (this->current_index > this->max_index)
+		this->max_index = this->current_index;
 }

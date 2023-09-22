@@ -6,13 +6,13 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/09 17:46:45 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/12 17:09:26 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/14 12:24:16 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= Animal
+NAME			= Bureaucrat
 
-SRCS			= ./main.cpp
+SRCS			= ./main.cpp ./Bureaucrat.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 

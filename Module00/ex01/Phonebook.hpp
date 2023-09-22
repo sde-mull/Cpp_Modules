@@ -6,13 +6,15 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:18 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/09 20:44:03 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:21:39 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+#include <iostream>
+#include <string>
 #include "Contact.hpp"
 
 class PhoneBook

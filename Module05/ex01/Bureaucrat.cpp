@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:10:44 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/14 15:30:06 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:31:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const &rhs)
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade needs to be less than 0");
+	return ("Error: Bureaucrat grade needs to be less than 0");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade needs to be higher than 151");
+	return ("Error: Bureaucrat grade needs to be higher than 151");
 }
 
 void    Bureaucrat::incrementGrade()
@@ -73,7 +73,7 @@ void    Bureaucrat::incrementGrade()
 
 void    Bureaucrat::decrementGrade()
 {
-	if (this->_grade + 1 > 150)
+	if (this->_grade + 1 < 1)
 		throw GradeTooLowException();
     this->_grade += 1;
 }
@@ -82,4 +82,19 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return (os);
+}
+
+void	Bureaucrat::signForm(std::string const formName, bool sign)
+{
+	std::cout << this->_name << " has to sign the " << formName << std::endl;
+
+	if (!sign)
+		std::cout << formName << " Signed!" << std::endl;
+	else
+	{
+		if (sign)
+			std::cout << formName << " couldn't be signed because the document was already signed :(" << std::endl;
+		else
+			std::cout << formName << " couldn't be signed because the grade is too low :(" << std::endl;
+	}
 }
