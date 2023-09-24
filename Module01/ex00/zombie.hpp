@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:59:57 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/08/30 16:44:13 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:05:23 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 class Zombie
 {
 	private:
-		std::string name;
+		std::string _name;
 	public:
 		Zombie(std::string name);
 		void announce(void);

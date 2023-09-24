@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:10:44 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/14 15:30:06 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:38:16 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Bureaucrat::Bureaucrat()
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << "Parametric constructor called" << std::endl;
+	std::cout << "Bureaucrat parametric constructor called" << std::endl;
 	if (this->_grade > 150)
 		throw GradeTooLowException();
 	else if (this->_grade < 1)
@@ -28,12 +28,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << this->_name << "Destructor called" << std::endl;
+	std::cout << this->_name << " Bureaucrat destructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -56,12 +56,12 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const &rhs)
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade needs to be less than 0");
+	return ("The grade is too high!!");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade needs to be higher than 151");
+	return ("The grade is too low!");
 }
 
 void    Bureaucrat::incrementGrade()

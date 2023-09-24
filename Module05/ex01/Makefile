@@ -6,7 +6,7 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/09 17:46:45 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/14 15:43:27 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/24 21:59:40 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS			= ./main.cpp ./Bureaucrat.cpp ./Form.cpp
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
 CPP				= g++
-FLAGS			=  -std=c++98
+FLAGS			=  -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 
 %.o: %.cpp
