@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 19:36:02 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/22 17:32:26 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/26 00:28:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	PhoneBook::Search(void)
 			break;
 		if (choices.find_first_not_of("0123456789") == std::string::npos)
 		{
-			index = std::stoi(choices);
+			index = std::atoi(choices.c_str());
 			if (index > this->max_index || index <= 0)
 			{
 				std::cout << YELLOW "The index must exist" RESET << std::endl;
