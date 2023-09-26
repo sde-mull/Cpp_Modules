@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/22 18:04:27 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/26 14:52:40 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= apocalipse
+NAME			= Apocalipse
 
-SRCS			= ./main.cpp ./newZombie.cpp ./randomChump.cpp ./zombie.cpp
+SRCS			= ./main.cpp ./newZombie.cpp ./randomChump.cpp ./Zombie.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 

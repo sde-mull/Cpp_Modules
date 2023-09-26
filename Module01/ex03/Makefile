@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/07/13 21:03:53 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/26 16:58:06 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS			= ./main.cpp ./HumanA.cpp ./HumanB.cpp ./Weapon.cpp
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
 CPP				= g++
-FLAGS			=  -std=c++98
+FLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 
 %.o: %.cpp

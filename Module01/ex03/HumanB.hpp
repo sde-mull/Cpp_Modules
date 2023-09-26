@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:06:06 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/13 22:07:21 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:16:49 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 class HumanB
 {
 	private:
-		std::string	name;
-		Weapon		*gun;
+		std::string	_name;
+		Weapon		*_gun;
 
 	public:
 		HumanB();
-		HumanB(std::string weapon);
+		HumanB(std::string name);
 		~HumanB();
 		void attack(void);
 		void setWeapon(Weapon& weapon);

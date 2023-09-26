@@ -142,7 +142,7 @@ void	PhoneBook::Search(void)
 			}
 			std::cout << B_MAGENTA "[Index]: " B_CYAN << index << RESET <<std::endl;
 			this->contacts[index - 1].print_info();
-		}
+		}l
 		else
 			std::cout << YELLOW "It must be an index" RESET << std::endl;
 		std::cout << std::flush;

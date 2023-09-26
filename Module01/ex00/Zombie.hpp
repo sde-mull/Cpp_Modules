@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 09:32:44 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/26 15:20:01 by sde-mull         ###   ########.fr       */
+/*   Created: 2023/07/12 15:59:57 by sde-mull          #+#    #+#             */
+/*   Updated: 2023/09/26 13:28:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
 #include <iostream>
+#include <string>
 
 #define BLACK		"\033[30m"
 #define RED			"\033[31m"
@@ -32,19 +36,18 @@
 #define B_WHITE		"\033[1;37m"
 #define RESET		"\033[0m"
 
-int main(void)
+class Zombie
 {
-	std::string str = "HELLO IM KINDA DONE WTH THIS";
-	std::string	*stringPTR = &str;
-	std::string &stringREF = str;
+	private:
+		std::string _name;
+	public:
+		Zombie();
+		Zombie(std::string name);
+		void announce(void);
+		~Zombie();
+};
 
-	std::cout << BLUE "Memory address of str: " RESET << &str << std::endl;
-	std::cout << BLUE "Memory address of stringPTR: " RESET << &stringPTR << std::endl;
-	std::cout << BLUE "Memory address of stringREF: " RESET << &stringREF << std::endl;
-	
-	std::cout << CYAN "value of str: " RESET << str << std::endl;
-	std::cout << CYAN "value of stringPTR: " RESET << stringPTR << std::endl;
-	std::cout << CYAN "value of stringREF: " RESET<< stringREF << std::endl;
-	
-	return (0);
-}
+Zombie  *newZombie(std::string name);
+void	randomChump(std::string name);
+
+#endif

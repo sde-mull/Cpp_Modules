@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:03:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/18 17:04:55 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:34:49 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,28 @@ void    Harl::error(void) {
 
 Harl::Harl(void)
 {
+		this->fun[0] = &Harl::debug;
+		this->fun[1] = &Harl::info;
+		this->fun[2] = &Harl::warning;
+		this->fun[3] = &Harl::error;
+		std::cout << "Harl default constructor called" << std::endl;
 }
 
 Harl::~Harl()
 {
+	std::cout << "Harl destructor called" << std::endl;
+}
+
+void	Harl::print_level(int i)
+{
+	func f;
+
+	while (i < 4)
+	{
+		f = this->fun[i++];
+		(this->*f)();
+		
+	}
 }
 
 void    Harl::complain( std:: string level ) {
@@ -55,7 +73,7 @@ void    Harl::complain( std:: string level ) {
     std::string levels[4] = { 
 	"DEBUG", 
 	"INFO", 
-	"WARNING", 
+	"WARNING",
 	"ERROR",
 	};
 	for (index = 0; index < 4; index++)
@@ -64,13 +82,16 @@ void    Harl::complain( std:: string level ) {
 	switch(index)
 	{
 		case 0:
-			this->debug();
+			print_level(0);
+			break ;
 		case 1:
-			this->info();
+			print_level(1);
+			break ;
 		case 2:
-			this->warning();
+			print_level(2);
+			break ;
 		case 3:
-			this->error();
+			print_level(3);
 			break ;
 		default:
         	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;

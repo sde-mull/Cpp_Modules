@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:00:13 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/12 17:11:41 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:28:48 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "zombie.hpp"
+#include "Zombie.hpp"
 
 int main(void)
 {
 	Zombie *zombie;
 
-	zombie = newZombie("Brian");
+	zombie = newZombie("FTW");
 	zombie->announce();
 	randomChump("Scott");
 
