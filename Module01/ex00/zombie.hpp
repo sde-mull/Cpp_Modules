@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:59:57 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/22 18:05:23 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:28:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ class Zombie
 	private:
 		std::string _name;
 	public:
+		Zombie();
 		Zombie(std::string name);
 		void announce(void);
 		~Zombie();
 };
 
-Zombie *newZombie(std::string name);
+Zombie  *newZombie(std::string name);
 void	randomChump(std::string name);
 
 #endif

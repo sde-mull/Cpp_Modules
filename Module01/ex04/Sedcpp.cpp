@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Sedcpp.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:11:43 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/26 18:43:09 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:55:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,14 @@ bool Sedcpp::replace(const std::string &s1, const std::string &s2)
 		std::cout << RED "Error:\nFailed to open the file" RESET << std::endl;
 		return (false);
 	}
-	if (ifs.is_open() && s1.compare(s2.c_str())){
+	if (ifs.is_open()){
 		if (std::getline(ifs, to_compare, '\0')){
 			position = to_compare.find(s1);
 			while (position != std::string::npos)
 			{
 				to_compare.erase(position, s1.length());
 				to_compare.insert(position, s2);
-				to_compare = to_compare[position];
-				position = to_compare.find(s1);
+				position = to_compare.find(s1, position + 1);
 			}
 			ofs << to_compare;
 		}
@@ -63,11 +62,6 @@ bool Sedcpp::replace(const std::string &s1, const std::string &s2)
 			ofs.close();
 			return (false);
 		}
-	}
-	else if (!(s1.compare(s2.c_str())) && ifs.is_open())
-	{
-		std::getline(ifs, to_compare, '\0');
-		ofs << to_compare;
 	}
 	else{
 		std::cout << B_RED "File opening failed." RESET << std::endl; 
