@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/26 14:52:40 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/29 18:43:03 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS			= ./main.cpp ./newZombie.cpp ./randomChump.cpp ./Zombie.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
+CPP				= c++
 FLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 

@@ -6,7 +6,7 @@
 #    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/26 16:59:30 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/29 18:43:32 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME			= harlFilter
 SRCS			= ./main.cpp ./Harl.cpp
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
+CPP				= c++
 FLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 

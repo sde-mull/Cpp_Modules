@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/10 19:35:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/27 13:39:22 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/09/29 18:43:23 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME			= sedcpp
 SRCS			= ./main.cpp ./Sedcpp.cpp
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
-FLAGS			= -std=c++98
+CPP				= c++
+FLAGS			= -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 
 %.o: %.cpp
