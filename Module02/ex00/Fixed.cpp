@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:54:45 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/21 21:55:26 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:33:22 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,41 @@
 
 Fixed::Fixed( Fixed const & src)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Fixed class copy constructor called" << std::endl;
     *this = src;
-
     return ;
 }
 
 Fixed::Fixed(void) : rawBits(0)
 {
-    std::cout << "Default constructor called" << std::endl;
-
+    std::cout << "Fixed class default constructor called" << std::endl;
     return ;
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
-
+    std::cout << "Fixed class destructor called" << std::endl;
     return ;
 }
 
-Fixed & Fixed::operator=(Fixed const & rhs)
+Fixed & Fixed::operator=(Fixed const &rhs)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
-
-    if (this != &rhs)
-        this->rawBits = rhs.getRawBits();
+    std::cout << "Fixed class copy assignment operator called" << std::endl;
+    this->rawBits = rhs.getRawBits();
 
     return *this;
 }
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
+    std::cout << "Fixed class getRawBits member function called" << std::endl;
 
     return this->rawBits;
 }
 
 void Fixed::setRawBits(int const raw)
 {
-    std::cout << "setRawBits member function called" << std::endl;
+    std::cout << "Fixed class setRawBits member function called" << std::endl;
     
     this->rawBits = raw;
 

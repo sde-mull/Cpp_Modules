@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:27:27 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/08/11 18:27:32 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:43:06 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
     private:
         int					rawBits;
-		static const int	factionalBit = 8;
+		static const int	fractionalBit = 8;
     
     public:
         Fixed(void);

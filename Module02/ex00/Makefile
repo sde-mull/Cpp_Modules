@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/21 21:55:08 by sde-mull          #+#    #+#              #
-#    Updated: 2023/07/21 21:56:51 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/10/05 16:51:10 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SRCS			= ./main.cpp ./Fixed.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
-FLAGS			=  -std=c++98
+CPP				= c++
+FLAGS			= -Wall -Werror -Wextra -std=c++98
 RM				= rm -f
 
 %.o: %.cpp
@@ -36,4 +36,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: all clean fclean reP
+.PHONY: all clean fclean re

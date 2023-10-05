@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:54:52 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/07/21 21:55:48 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:37:57 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) {
+int main(void) 
+{
     Fixed a;
-    Fixed b( a );
+    Fixed b(a);
     Fixed c;
 
     c = b;
