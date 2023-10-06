@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 14:04:50 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:38:43 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	options(unsigned int player)
 int main(void)
 {	
 	system("clear");
-    ScavTrap player2("Roronoa Zoro");
-	DiamondTrap player1("Monkey D. Luffy");
+    ScavTrap player2("Zoro");
+	DiamondTrap player1("Luffy");
 	std::string choices;
 	unsigned int index;
 	unsigned int player;
@@ -42,6 +42,8 @@ int main(void)
 	player = 0;
 	player2.guardGate();
 	player1.whoAmI();
+	player1.guardGate();
+	player1.highFivesGuys();
 	while (player != 3)
 	{
 		if (player == 2)

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:41 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 14:08:05 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:40:12 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap " << B_MAGENTA << this->_name << B_RED " was defeated 💀" RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const & src)
+ClapTrap::ClapTrap( ClapTrap const & src)
 {
     std::cout << B_YELLOW "ClapTrap copy constructor called" RESET << std::endl;
     *this = src;
@@ -42,12 +42,13 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs)
     this->_energyPoints = rhs.get_energy_points();
     this->_hitPoints = rhs.get_hit_points();
     this->_name = rhs.get_name();
-
+    
     return *this;
 }
 
 void ClapTrap::attack(const std::string& target)
 {
+    std::cout << "ClapTrap ";
     if (this->_hitPoints <= 0)
     {
         std::cout << B_MAGENTA << this->_name << B_RED " was already defeated and can't attack 💀" RESET << std::endl;

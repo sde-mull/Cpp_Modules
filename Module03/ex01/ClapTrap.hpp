@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:05:41 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:18:36 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string  	_name;
 		int 			_hitPoints;
 		int 			_energyPoints;

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:41 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 14:00:48 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:28:13 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & rhs)
 
 void ClapTrap::attack(const std::string& target)
 {
+    std::cout << "ClapTrap ";
     if (this->_hitPoints <= 0)
     {
         std::cout << B_MAGENTA << this->_name << B_RED " was already defeated and can't attack 💀" RESET << std::endl;

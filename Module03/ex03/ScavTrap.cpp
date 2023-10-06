@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:24:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 14:07:50 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:36:00 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(void): ClapTrap()
 {
-    std::cout << "ScavTrap " << B_MAGENTA << this->get_name() << B_GREEN " default protection summoned!" RESET << std::endl;
+    std::cout << B_MAGENTA << this->get_name() << B_GREEN " default protection summoned!" RESET << std::endl;
 	this->setAttributes(this->get_name(), 100, 50, 20);
 }
 
@@ -24,7 +24,7 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	this->setAttributes(this->get_name(), 100, 50, 20);
 }
 
-ScavTrap::ScavTrap(ScavTrap const & src): ClapTrap(src)
+ScavTrap::ScavTrap( ScavTrap const & src): ClapTrap(src)
 {
     *this = src;
 }
@@ -42,4 +42,23 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
 void ScavTrap::guardGate(void)
 {
     std::cout << B_MAGENTA << this->get_name() << B_CYAN << " is now in Gate keeper mode." RESET << std::endl;
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+    std::cout << "ScavTrap ";
+    if (this->_hitPoints <= 0)
+    {
+        std::cout << B_MAGENTA << this->_name << B_RED " was already defeated and can't attack 💀" RESET << std::endl;
+        return ;
+    }
+    if (this->_energyPoints <= 0)
+    {
+        std::cout << B_MAGENTA << this->_name << B_YELLOW " has no energy to attack 🫠" RESET << std::endl;
+        return ;
+    }
+    this->_energyPoints -= 1;
+    std::cout << B_MAGENTA << this->_name << B_GREEN " attacks " 
+    << B_MAGENTA << target << B_GREEN " causing " << B_RED << this->_attackDamage 
+    << B_GREEN " points of damage 🩸" RESET << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 13:17:04 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:15:14 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	options(unsigned int player)
 int main(void)
 {	
 	system("clear");
-	ClapTrap player1("Monkey D. Luffy");
-    ClapTrap player2("Roronoa Zoro");
+	ClapTrap player1("Luffy");
+    ClapTrap player2("Zoro");
 
 	std::string choices;
 	unsigned int index;

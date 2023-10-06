@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:42:34 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/10/06 13:59:57 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:37:23 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class FragTrap : public ClapTrap
         FragTrap & operator=(FragTrap const & rhs);
 
 		void highFivesGuys(void);
+		void attack(const std::string& target);
 };
 
 #endif
