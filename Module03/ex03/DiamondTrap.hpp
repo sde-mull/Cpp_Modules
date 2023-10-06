@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:09:33 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 16:33:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:07:58 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 	 public:
 	 	DiamondTrap();
         DiamondTrap(std::string name);
-        DiamondTrap( DiamondTrap const & src);
+        DiamondTrap(DiamondTrap const & src);
         ~DiamondTrap(void);
 
         DiamondTrap & operator=(DiamondTrap const & rhs);

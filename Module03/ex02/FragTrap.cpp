@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:44:04 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:20:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:02:27 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	this->setAttributes(this->get_name(), 100, 100, 30);
 }
 
-FragTrap::FragTrap( FragTrap const & src): ClapTrap(src)
+FragTrap::FragTrap(FragTrap const & src): ClapTrap(src)
 {
     *this = src;
 }
@@ -35,10 +35,7 @@ FragTrap::~FragTrap() {
 
 FragTrap & FragTrap::operator=(FragTrap const & rhs)
 {
-    if (this != &rhs)
-    {
-        this->setAttributes(rhs.get_name(), rhs.get_hit_points(), rhs.get_energy_points(), rhs.get_attack_damage());
-    }
+    ClapTrap::operator=(rhs);
     return *this;
 }
 

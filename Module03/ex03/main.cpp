@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:47:10 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:04:50 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
+#include <stdlib.h>
 
 void	options(unsigned int player)
 {
@@ -51,7 +52,7 @@ int main(void)
 		std::getline(std::cin, choices);
 		if (choices.find_first_not_of("0123456789") == std::string::npos)
 		{
-			index = std::stoi(choices);
+			index = std::atoi(choices.c_str());
 			if (index > 0 && index < 5)
 			{
 				if (index == 1)

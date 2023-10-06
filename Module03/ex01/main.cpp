@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:08:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:22:42 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:39:08 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include <stdlib.h>
 
 void	options(unsigned int player)
 {
@@ -32,10 +33,17 @@ int main(void)
 	system("clear");
 	ClapTrap player1("Monkey D. Luffy");
     ScavTrap player2("Roronoa Zoro");
+	ScavTrap cp(player2);
+
 	std::string choices;
 	unsigned int index;
 	unsigned int player;
 
+
+	std::cout << cp.get_name() << std::endl;
+	std::cout << cp.get_attack_damage() << std::endl;
+	std::cout << cp.get_energy_points() << std::endl;
+	std::cout << cp.get_hit_points() << std::endl;
 	player = 0;
 	player2.guardGate();
 	while (player != 3)
@@ -48,7 +56,7 @@ int main(void)
 		std::getline(std::cin, choices);
 		if (choices.find_first_not_of("0123456789") == std::string::npos)
 		{
-			index = std::stoi(choices);
+			index = std::atoi(choices.c_str());
 			if (index > 0 && index < 5)
 			{
 				if (index == 1)

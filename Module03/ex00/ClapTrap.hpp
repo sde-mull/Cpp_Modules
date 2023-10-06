@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 17:09:25 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:13:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ class ClapTrap
 		void 			beRepaired(unsigned int amount);
 		void 			stats(void);
 		void 			get_weapon(unsigned int amount);
-		unsigned int 	get_attack_damage(void);
-		int				get_energy_points(void);
-		int				get_hit_points(void);
+		unsigned int 	get_attack_damage(void) const;
+		int				get_energy_points(void) const;
+		int				get_hit_points(void) const;
 		std::string		get_name(void) const;
 };
 

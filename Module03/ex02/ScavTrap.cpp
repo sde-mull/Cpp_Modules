@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:24:05 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:18:54 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:03:18 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ ScavTrap::~ScavTrap() {
 
 ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
 {
-    if (this != &rhs)
-    {
-        this->setAttributes(rhs.get_name(), rhs.get_hit_points(), rhs.get_energy_points(), rhs.get_attack_damage());
-    }
+    ClapTrap::operator=(rhs);
     return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:41 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:18:07 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:58:19 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ ClapTrap::ClapTrap( ClapTrap const & src)
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs)
 {
     std::cout << B_YELLOW "ClapTrap copy assignment operator called" RESET << std::endl;
-
+    this->_attackDamage = rhs.get_attack_damage();
+    this->_energyPoints = rhs.get_energy_points();
+    this->_hitPoints = rhs.get_hit_points();
+    this->_name = rhs.get_name();
+    
     return *this;
 }
 

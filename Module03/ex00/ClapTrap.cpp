@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:09:41 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/08 18:14:23 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:00:17 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "ClapTrap" << B_MAGENTA << this->_name << B_RED " was defeated 💀" RESET << std::endl;
+	std::cout << "ClapTrap " << B_MAGENTA << this->_name << B_RED " was defeated 💀" RESET << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap const & src)
+ClapTrap::ClapTrap(ClapTrap const & src)
 {
     std::cout << B_YELLOW "ClapTrap copy constructor called" RESET << std::endl;
     *this = src;
@@ -38,6 +38,11 @@ ClapTrap::ClapTrap( ClapTrap const & src)
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs)
 {
     std::cout << B_YELLOW "ClapTrap copy assignment operator called" RESET << std::endl;
+    
+    this->_attackDamage = rhs.get_attack_damage();
+    this->_energyPoints = rhs.get_energy_points();
+    this->_hitPoints = rhs.get_hit_points();
+    this->_name = rhs.get_name();
 
     return *this;
 }
@@ -100,17 +105,17 @@ void ClapTrap::takeDamage(unsigned int amount)
     std::cout << B_MAGENTA << this->_name << B_YELLOW " got hit by " B_RED << amount << B_YELLOW " damage 💥" << std::endl;
 }
 
-unsigned int ClapTrap::get_attack_damage(void)
+unsigned int ClapTrap::get_attack_damage(void) const
 {
     return (this->_attackDamage);
 }
 
-int    ClapTrap::get_energy_points(void)
+int    ClapTrap::get_energy_points(void) const
 {
     return (this->_energyPoints);
 }
 
-int    ClapTrap::get_hit_points(void)
+int    ClapTrap::get_hit_points(void) const
 {
     return (this->_hitPoints);
 }
