@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:02:03 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/09 20:37:43 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/08 00:54:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Cat::~Cat()
 
 Cat & Cat::operator=(Cat const &rhs)
 {
+	Animal::operator=(rhs);
 	return *this;
 }
 

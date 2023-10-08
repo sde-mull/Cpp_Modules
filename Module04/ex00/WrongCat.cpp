@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:06:09 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/09 20:46:21 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/08 00:54:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ WrongCat::~WrongCat()
 
 WrongCat & WrongCat::operator=(WrongCat const &rhs)
 {
+	WrongAnimal::operator=(rhs);
 	return *this;
 }
 

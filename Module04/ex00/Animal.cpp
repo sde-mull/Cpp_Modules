@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:46:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/09 20:39:32 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/08 00:55:05 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Animal::Animal(void)
 	std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : type(type)
+Animal::Animal(std::string type) : _type(type)
 {
 	std::cout << "Animal parametric constructor called" << std::endl;
 }
@@ -34,10 +34,7 @@ Animal::~Animal()
 
 Animal & Animal::operator=(Animal const &rhs)
 {
-	if (this != &rhs)
-	{
-		this->type = rhs.type;
-	}
+	this->_type = rhs.getType();
 	return *this;
 }
 
@@ -48,5 +45,5 @@ void	Animal::makeSound(void) const
 
 std::string Animal::getType(void) const
 {
-	return this->type;
+	return this->_type;
 }

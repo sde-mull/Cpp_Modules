@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:33:16 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/09 20:44:27 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/08 00:51:08 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class WrongAnimal
 {
 	protected:
-		std::string type;
+		std::string _type;
 
 	public:
 		WrongAnimal();

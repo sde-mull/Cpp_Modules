@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:31:40 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/09 20:40:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2023/10/08 00:49:15 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Animal
 {
 	protected:
-		std::string type;
+		std::string _type;
 
 	public:
 		Animal();

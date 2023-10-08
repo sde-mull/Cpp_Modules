@@ -6,7 +6,7 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/09 17:46:45 by sde-mull          #+#    #+#              #
-#    Updated: 2023/09/09 17:47:26 by sde-mull         ###   ########.fr        #
+#    Updated: 2023/10/08 00:53:41 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SRCS			= ./main.cpp ./Animal.cpp ./WrongCat.cpp ./WrongAnimal.cpp ./Dog.cpp ./Ca
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
-FLAGS			=  -std=c++98
+CPP				= c++
+FLAGS			= -Wall -Werror -Wextra -std=c++98
 RM				= rm -f
 
 %.o: %.cpp
