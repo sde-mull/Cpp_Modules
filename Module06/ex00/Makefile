@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/09 17:46:45 by sde-mull          #+#    #+#              #
-#    Updated: 2024/02/12 20:21:34 by sde-mull         ###   ########.fr        #
+#    Created: 2024/02/12 20:21:08 by sde-mull          #+#    #+#              #
+#    Updated: 2024/02/12 20:32:22 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= Form
+NAME			= convert
 
-SRCS			= ./main.cpp ./Bureaucrat.cpp ./Form.cpp
+SRCS			= ./main.cpp ScalarConverter.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
