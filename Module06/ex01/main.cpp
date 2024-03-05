@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:31:32 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/02/12 20:32:36 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/03/05 00:10:18 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 int main(void)
 {
-    int i;
-    Data data_obj;
-    uintptr_t int_ptr;
-    Data *data_ptr;
+    Data *data = new Data;
+	data->number = 423;
+	data->str = "TestingABC";
+	Data *testing;
 
-    i = 42;
-    data_obj.member = &i;
+	uintptr_t raw = Serializer::serialize(data);
 
-    int_ptr = Serializer::serialize(&data_obj);
-    data_ptr = Serializer::deserialize(int_ptr);
+	std::cout << data->number << " " << data->str << std::endl;
+	std::cout << "Adress of Data Struct: " << data << std::endl;
+	std::cout << "Serialized Adress of Data Struct: " << raw << std::endl;
 
-    std::cout << "Original Pointer: " << &data_obj << std::endl;
-    std::cout << "Final Pointer: " << data_ptr << std::endl;
-    
+	testing = Serializer::deserialize(raw);
+	std::cout << "Testing Adress of Data Struct: " << testing << std::endl;
+	std::cout << "Data Adress of Data Struct: " << data << std::endl;
+	
+	std::cout << data->number << " " << data->str << std::endl;
+	
+	delete data;
     return (0);
 }

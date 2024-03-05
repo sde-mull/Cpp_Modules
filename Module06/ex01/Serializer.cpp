@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:32:01 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/02/12 20:33:08 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/03/04 22:36:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 Serializer::Serializer()
 {
+    std::cout << "Serializer constructor called" << std::endl;
 }
 
 Serializer::Serializer(const Serializer &src)
 {
     *this = src;
+    std::cout << "Serializer copy constructor called" << std::endl;
 }
 
 Serializer & Serializer::operator = (const Serializer &src)
@@ -29,16 +31,15 @@ Serializer & Serializer::operator = (const Serializer &src)
 
 Serializer::~Serializer()
 {
+    std::cout << "Serializer destructor called" << std::endl;
 }
 
 uintptr_t Serializer::serialize(Data *ptr)
 {
-    uintptr_t intptr = reinterpret_cast<uintptr_t>(ptr);
-    return (intptr);
+    return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-    Data *data_ptr = reinterpret_cast<Data*>(raw);
-    return (data_ptr);
+    return (reinterpret_cast<Data*>(raw));
 }
