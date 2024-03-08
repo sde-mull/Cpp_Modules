@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:37:01 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/03/08 15:19:20 by sde-mull         ###   ########.fr       */
+/*   Created: 2024/03/06 22:02:58 by sde-mull          #+#    #+#             */
+/*   Updated: 2024/03/06 22:10:08 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 # include <iostream>
-# include <ctime>
-# include <cstdlib>
+# include <string>
 
-class Base
-{
-    public:
-        virtual ~Base();
+template <typename T> void swap(T &x, T &y) {
+	T tmp = x;
+	x = y;
+	y = tmp;
+}
 
-        static Base* generate(void);
-        static void identify(Base* p);
-        static void identify(Base& p);
-};
+template <typename T> T const & min(T const &x, T const &y) {
+	if (x < y)
+		return x;
+	return y;
+}
 
-class A : public Base {};
-class B : public Base  {};
-class C : public Base {};
+template <typename T> T const & max(T const &x, T const &y) {
+	if (x > y)
+		return x;
+	return y;
+}
 
 #endif

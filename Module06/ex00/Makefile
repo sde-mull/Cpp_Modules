@@ -6,7 +6,7 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 20:21:08 by sde-mull          #+#    #+#              #
-#    Updated: 2024/03/05 00:19:09 by sde-mull         ###   ########.fr        #
+#    Updated: 2024/03/06 22:01:06 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS			= ./main.cpp ScalarConverter.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
-CPP				= g++
+CPP				= c++
 FLAGS			=  -Wall -Wextra -Werror -std=c++98
 RM				= rm -f
 

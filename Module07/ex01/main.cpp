@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:37:01 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/03/08 15:19:20 by sde-mull         ###   ########.fr       */
+/*   Created: 2024/02/12 20:31:32 by sde-mull          #+#    #+#             */
+/*   Updated: 2024/03/08 15:14:01 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#include "Iter.hpp"
 
-# include <iostream>
-# include <ctime>
-# include <cstdlib>
-
-class Base
+int main(void)
 {
-    public:
-        virtual ~Base();
+	int intArray[] = {1, 2, 3, 4, 5};
 
-        static Base* generate(void);
-        static void identify(Base* p);
-        static void identify(Base& p);
-};
+    std::string strArray[] = {"Hello World"};
 
-class A : public Base {};
-class B : public Base  {};
-class C : public Base {};
-
-#endif
+    void* voidArray[] = {&intArray, &strArray};
+    {
+        ::iter(static_cast<int*>(voidArray[0]), 5, &printElem);
+		std::cout << std::endl;
+    }
+    {
+        ::iter(static_cast<char*>(voidArray[1]), 11, &printElem);
+		std::cout << std::endl;
+    }
+    return (0);
+}
