@@ -6,13 +6,13 @@
 #    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 20:31:39 by sde-mull          #+#    #+#              #
-#    Updated: 2024/03/08 15:15:48 by sde-mull         ###   ########.fr        #
+#    Updated: 2024/03/11 23:10:25 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= Iter
+NAME			= Span
 
-SRCS			= ./main.cpp
+SRCS			= ./main.cpp ./Span.cpp
 
 SRCS_OBJS		= $(SRCS:.cpp=.o)
 
