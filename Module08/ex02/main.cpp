@@ -6,63 +6,58 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:38:49 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/03/08 18:18:44 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:15:44 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "MutantStack.hpp"
 
 int main()
 {
-    // First case: empty array
     {
-        Array<int> example1;
-        std::cout << "Size of the example1: " << example1.Size() << std::endl;
+        MutantStack<int> mstack;
+        mstack.push(5);
+        mstack.push(17);
+        std::cout << mstack.top() << std::endl;
+        mstack.pop();
+        std::cout << mstack.size() << std::endl;
+        mstack.push(3);
+        mstack.push(5); 
+        mstack.push(737);
+        mstack.push(0);
+        MutantStack<int>::iterator it = mstack.begin();
+        MutantStack<int>::iterator ite = mstack.end();
+        ++it;
+        --it;
+        while (it != ite) {
+            std::cout << *it << std::endl;
+        ++it; }
+        std::stack<int> s(mstack);
     }
-    std::cout << "---------------------------------------------------------------" << std::endl;
+    std::cout << "-------------------------------------" << std::endl;
     {
-        int *a = new int();
-        std::cout << *a << std::endl;
-    }
-    std::cout << "---------------------------------------------------------------" << std::endl;
-    // Second case: Number of elements passed and testing all constructors forms
-    {
-        Array<int> Debugging;
-        srand(time(NULL));
-        Array<int> example2(10);
-        for (int i = 0; i < 10; i++)
-        {
-            const int Number = rand() % 101;
-            std::cout << "Number generated: " << Number << std::endl;
-            example2[i] = Number;
-        }
-        std::cout << "------------------------  Original Array contents  --------------------------------" << std::endl;
-        example2.printArray();
+        std::list<int> mstack;
 
-        std::cout << "------------------------  Assignment Operator Array contents  --------------------------------" << std::endl;
-        Debugging = example2;
-        Debugging.printArray();
+        mstack.push_back(5);
+        mstack.push_back(17);
+        std::cout << mstack.back() << std::endl;
+        mstack.pop_back();
+        std::cout << mstack.size() << std::endl;
+        mstack.push_back(3);
+        mstack.push_back(5);
+        mstack.push_back(737);
+        mstack.push_back(0);
 
-        std::cout << "------------------------  Copy Constructor Array contents  --------------------------------" << std::endl;
-        Array<int> Debugging2(example2);
-        Debugging2.printArray();
-    }
-    std::cout << "---------------------------------------------------------------" << std::endl;
-    // Third Case: Check if the exceptions are working well
-    {
-        try
+        std::list<int>::iterator it = mstack.begin();
+        std::list<int>::iterator ite = mstack.end();
+        ++it;
+        --it;
+        while (it != ite)
         {
-            std::cout << "------------------------  Exception: No error case  --------------------------------" << std::endl;
-            Array<int> example3(1);
-            example3[0] = 3;
-            std::cout << "example3[0] = 3" << std::endl;
-            std::cout << "------------------------  Exception: error case  --------------------------------" << std::endl;
-            std::cout << "example3[1] = 4" << std::endl;
-            example3[1] = 4;
+            std::cout << *it << std::endl;
+            ++it;
         }
-        catch (const std::exception &e)
-        {
-            std::cerr << e.what() << '\n';
-        }
+        std::list<int> s(mstack);
     }
+    return 0;
 }
