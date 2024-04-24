@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 21:28:33 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/04/22 19:51:13 by sde-mull         ###   ########.fr       */
+/*   Created: 2024/04/10 21:28:28 by sde-mull          #+#    #+#             */
+/*   Updated: 2024/04/22 19:49:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#ifndef RPN_HPP
+# define RPN_HPP
 
-int main(int argc, char **argv)
+#include <iostream>
+#include <stack>
+
+class RPN
 {
+    private:
+        std::stack<int> calculate;
+        RPN();
 
-  if (argc != 2)
-  {
-		std::cerr << "Error: could not open file." << std::endl;
-		return (1);
-  }
+    public:
+        RPN(char *numbers);
+        RPN( RPN const & src);
+        ~RPN();
 
-  try {
-  	BitcoinExchange bit = BitcoinExchange(argv[1]);
+        RPN & operator=(RPN const & rhs);
 
-  	std::cout << "show:" << std::endl;
-  	bit.show();
-  }
-  catch(const std::exception& e) {
-    std::cerr << e.what() << std::endl;
-  }
-  
-  return 0;
-}
+        void    result(void);
+};
+
+#endif

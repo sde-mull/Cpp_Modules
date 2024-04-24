@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/04/22 19:50:55 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:45:54 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
+#ifndef PmergeMe_HPP
+# define PmergeMe_HPP
 
 #include <iostream>
-#include <sstream>
-#include <map>
-#include <fstream>
-#include <cstdlib>
+#include <list>
+#include <vector>
+#include <algorithm>
+#include <ctime>
 
-class BitcoinExchange
+class PmergeMe
 {
     private:
-        std::map<int, std::map<std::string, std::string> > bitcoin;
-        BitcoinExchange();
-        void    divideInput(std::string input);
+        std::list<unsigned int>     _list;
+        std::vector<unsigned int>   _vector;
+        double                      _timeList;
+        double                      _timeVector;
+        PmergeMe();
+        void    sortedList(void);
+        void    sortedVector(void);
 
     public:
-        BitcoinExchange(char *file);
-        BitcoinExchange( BitcoinExchange const & src);
-        ~BitcoinExchange();
+        PmergeMe(char **numbers);
+        PmergeMe( PmergeMe const & src);
+        ~PmergeMe();
 
-        BitcoinExchange & operator=(BitcoinExchange const & rhs);
+        PmergeMe & operator=(PmergeMe const & rhs);
 
-        void    show(void);
+        void    show(char **argv);
 };
-
-std::ostream &  operator<<( std::ostream & o, BitcoinExchange const & i );
 
 #endif
