@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:36:59 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/03/05 00:30:54 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:54:45 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,21 @@ Base::~Base()
 Base *Base::generate()
 {
     srand(static_cast<unsigned int>(time(NULL)));
-    int rand_nbr = rand() % 3;
+    int rand_nbr = rand() % 4;
 
     switch (rand_nbr)
     {
     case (1):
+		std::cout << "Got A" << std::endl;
         return (new A());
     case (2):
+		std::cout << "Got B" << std::endl;
         return (new B());
-    default:
+    case (3):
+		std::cout << "Got C" << std::endl;
         return (new C());
     }
-    return (new C());
+    return (NULL);
 }
 
 void Base::identify(Base *p)
@@ -58,6 +61,7 @@ void Base::identify(Base &p)
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << std::endl;
 		std::cerr << e.what() << '\n';
 	}
 
@@ -69,6 +73,7 @@ void Base::identify(Base &p)
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << std::endl;
 		std::cerr << e.what() << '\n';
 	}
 	
@@ -80,6 +85,7 @@ void Base::identify(Base &p)
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << std::endl;
 		std::cerr << e.what() << '\n';
 	}
 	return ;
