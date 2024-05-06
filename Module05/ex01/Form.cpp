@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:16:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 00:22:25 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:08:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ Form::Form(void) : _name(""), _sign(false), _gradeSign(0), _gradeExecute(0)
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int gradeSign, int gradeExecute) : _name(name), _sign(false), \
-																_gradeSign(gradeSign), \
-																_gradeExecute(gradeExecute)
+Form::Form(std::string name, int gradeSign, int gradeExecute) : _name(name), _sign(false), _gradeSign(gradeSign), _gradeExecute(gradeExecute)
 {
-	std::cout << "Form parametric constructor called" << std::endl;
+	std::cout << name << " Form parametric constructor called" << std::endl;
 	if (gradeSign >= 151 || gradeExecute >= 151)
 		throw GradeTooLowException();
 	else if (gradeSign <= 0 || gradeExecute <= 0)
@@ -33,19 +31,20 @@ Form::~Form(void)
 	std::cout << this->_name << " form destructor called" << std::endl;
 }
 
-Form::Form(Form const &src) : _name(getName()), \
-							  _sign(getSign()), \
-							  _gradeSign(getGradeSign()), \
-							  _gradeExecute(getGradeExecute())
+Form::Form(Form const &src) : _gradeSign(src.getGradeSign()), _gradeExecute(getGradeExecute())
 {
-	std::cout << "Form copy constructor called" << std::endl;
+	std::cout << src.getName() << " Form copy constructor called" << std::endl;
 	*this = src;
 }
 
 Form & Form::operator=(Form const &rhs)
 {
-	if (this != &rhs)
+	if (this != &rhs){
 		this->_sign = rhs.getSign();
+		const_cast<std::string&>(this->_name) = rhs.getName();
+		const_cast<int&>(this->_gradeSign) = rhs.getGradeSign();
+		const_cast<int&>(this->_gradeExecute) = rhs.getGradeExecute();
+	}
 	return *this;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:10:44 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/24 22:57:29 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:08:33 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << "Bureaucrat parametric constructor called" << std::endl;
+	std::cout << "Bureaucrat " << name << " parametric constructor called" << std::endl;
 	if (this->_grade > 150)
 		throw GradeTooLowException();
 	else if (this->_grade < 1)
@@ -33,7 +33,7 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	std::cout << src.getName() << " Bureaucrat copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -49,8 +49,10 @@ int	Bureaucrat::getGrade() const
 
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const &rhs)
 {
-	if (this != &rhs)
+	if (this != &rhs){
 		this->_grade = rhs.getGrade();
+		const_cast<std::string&>(this->_name) = rhs.getName();
+	}
 	return *this;
 }
 

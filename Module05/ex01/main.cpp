@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:25:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/24 23:02:58 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:06:10 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    testForm(Bureaucrat &bure, Form &form)
         
     } catch(const std::exception& e) {
         
-        std::cout << "Erro: " << e.what() << std::endl << std::endl;
+        std::cout << "Error: " << e.what() << std::endl << std::endl;
     
     }
 }
@@ -49,7 +49,7 @@ void    testGrade(Bureaucrat &bure, std::string test)
         
     }  catch(const std::exception& e) {
         
-        std::cout << "Erro: " << e.what() << std::endl << std::endl;
+        std::cout << "Error: " << e.what() << std::endl << std::endl;
     
     }
 }
@@ -64,30 +64,45 @@ void    finalResult(Bureaucrat &bure1, Bureaucrat &bure2, Bureaucrat &bure3)
 
 int main()
 {
-    Bureaucrat  Einstein("Einstein", 1);
-    Bureaucrat  Dumbass("Dumbass", 150);
-    Bureaucrat  Arthur("Arthur", 75);
+    Bureaucrat  Persona1("Persona1", 1);
+    Bureaucrat  Persona2("Persona2", 150);
+    Bureaucrat  Persona3("Persona3", 75);
 
     Form        diagnostic("Diagnostic test", 149, 149);
     Form        tpc("TPC", 75, 75);
     Form        test("Test", 30, 30);
     Form        exam("Exam", 15, 15);
 
-    testGrade(Einstein, "Increment");
-    testGrade(Einstein, "Decrement");
-    testGrade(Dumbass, "Decrement");
-    testGrade(Dumbass, "Increment");
-    testGrade(Arthur, "Decrement");
-    testGrade(Arthur, "Increment");
+    std::cout << std::endl;
+    std::cout << "------------------------- testGrade functions -------------------" << std::endl << std::endl;
 
-    testForm(Dumbass, exam);
-    testForm(Einstein, exam);
-    testForm(Dumbass, diagnostic);
-    testForm(Arthur, tpc);
-    testForm(Einstein, test);
-    testForm(Einstein, tpc);
+    testGrade(Persona1, "Increment");
+    testGrade(Persona1, "Decrement");
+    testGrade(Persona2, "Decrement");
+    testGrade(Persona2, "Increment");
+    testGrade(Persona3, "Decrement");
+    testGrade(Persona3, "Increment");
+
+    std::cout << "------------------------- testForm functions -------------------" << std::endl << std::endl;
+
+    testForm(Persona2, exam);
+    testForm(Persona1, exam);
+    testForm(Persona2, diagnostic);
+    testForm(Persona3, tpc);
+    testForm(Persona1, test);
+    testForm(Persona1, tpc);
     
-    finalResult(Dumbass, Einstein, Arthur);
+    finalResult(Persona1, Persona2, Persona3);
+
+    std::cout << "--------------------------- Testing copy constructor Form --------------------------------- " << std::endl;
+
+    Form test_copy(test);
+    Form exam_copy;
+
+    exam_copy = exam;
+
+    std::cout << test_copy << std::endl;
+    std::cout << exam_copy << std::endl;
     
     return 0;
 }

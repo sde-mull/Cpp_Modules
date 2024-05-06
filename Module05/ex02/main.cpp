@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:25:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:40:03 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:53:32 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void    testGrade(Bureaucrat *bure, AForm *form)
+void    testExecute(Bureaucrat *bure, AForm *form)
 {
     try {
             std::cout << *bure << std::endl;
@@ -29,14 +29,14 @@ void    testGrade(Bureaucrat *bure, AForm *form)
         
     }  catch(const std::exception& e) {
         
-        std::cout << "Erro: " << e.what() << std::endl << std::endl;
+        std::cout << "Error: " << e.what() << std::endl << std::endl;
     
     }
 }
 
 void    testCopy(AForm *form1, AForm *form2)
 {
-    std::cout << *form1 << " for " << *form2 << std::endl;
+    std::cout << *form1 << " \n" << *form2 << std::endl;
     
     form1 = form2;
 
@@ -45,20 +45,22 @@ void    testCopy(AForm *form1, AForm *form2)
 
 int main()
 {
-    Bureaucrat  camila("Camila", 1);
-    Bureaucrat  albert("Albert", 150);
+    Bureaucrat  Persona1("Persona1", 1);
+    Bureaucrat  Persona2("Persona2", 150);
+    Bureaucrat  Persona3("Persona3", 50);
     AForm       *shrubbery = new ShrubberyCreationForm("home");
     AForm       *robot = new RobotomyRequestForm("robot");
     AForm       *presidential = new PresidentialPardonForm("president");
 
     std::cout << std::endl << "---Test Assined---" << std::endl << std::endl;
 
-    testGrade(&camila, shrubbery);
-    testGrade(&camila, robot);
-    testGrade(&camila, presidential);
-    testGrade(&albert, shrubbery);
-    testGrade(&albert, robot);
-    testGrade(&albert, presidential);
+    testExecute(&Persona3, robot);
+    testExecute(&Persona1, shrubbery);
+    testExecute(&Persona1, robot);
+    testExecute(&Persona1, presidential);
+    testExecute(&Persona2, shrubbery);
+    testExecute(&Persona2, robot);
+    testExecute(&Persona2, presidential);
     
     std::cout << std::endl << "---Test Copy---" << std::endl << std::endl;
     

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 23:47:02 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:33:30 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:56:55 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void ShrubberyCreationForm::task() const
 	file.open(file_to_write.c_str(), std::ios::in | std::ios::app);
 	if (!file)
 		std::cout << "Not able to create the file" << std::endl;
+
 	file << "                     ; ; ; " << std::endl;
 	file << "                   ;        ;  ;     ;;    ; " << std::endl;
 	file << "                ;                 ;         ;  ; " << std::endl;

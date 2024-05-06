@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/09 17:46:45 by sde-mull          #+#    #+#              #
-#    Updated: 2024/03/06 22:01:32 by sde-mull         ###   ########.fr        #
+#    Updated: 2024/05/06 18:58:05 by sde-mull         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= AForm
+NAME			= Intern
 
 SRCS			= ./main.cpp ./Bureaucrat.cpp ./AForm.cpp ./PresidentialPardonForm.cpp ./ShrubberyCreationForm.cpp ./RobotomyRequestForm.cpp \
 				  ./Intern.cpp

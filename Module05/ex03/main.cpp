@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:25:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:46:58 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:14:07 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,56 @@
 
 int main()
 {
-    Intern someRandomIntern;
-    AForm* rrf;
+    Bureaucrat  Persona1("Persona1", 1);
+    Intern      someRandomIntern;
+    AForm*      RSP;
 
     try {
             std::cout << std::endl << "--- Test ---" << std::endl << std::endl;
     
-            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-            std::cout << "1. " << rrf->getName() << std::endl;
-            delete rrf;
+            RSP = someRandomIntern.makeForm("robotomy request", "Bender");
+            
+            std::cout << std::endl;
+            std::cout << "1. " << RSP->getName() << std::endl;
+            std::cout << std::endl;
+            RSP->beSigned(Persona1);
+            Persona1.executeForm(*RSP);
+            std::cout << std::endl;
+            
+            delete RSP;
             std::cout  << std::endl;
             
-            rrf = someRandomIntern.makeForm("shrubbery creation", "Fruit");
-            std::cout << "2. " << rrf->getName() << std::endl;
-            delete rrf;
+            RSP = someRandomIntern.makeForm("shrubbery creation", "Fruit");
+
+            std::cout << std::endl;
+            std::cout << "2. " << RSP->getName() << std::endl;
+
+            std::cout << std::endl;
+            RSP->beSigned(Persona1);
+            Persona1.executeForm(*RSP);
+            std::cout << std::endl;
+
+            delete RSP;
             std::cout  << std::endl;
         
-            rrf = someRandomIntern.makeForm("presidential pardon", "House");
-            std::cout << "3. " << rrf->getName() << std::endl;
-            delete rrf;
+            RSP = someRandomIntern.makeForm("presidential pardon", "House");
+
+            std::cout << std::endl;
+            std::cout << "3. " << RSP->getName() << std::endl;
+
+            std::cout << std::endl;
+            RSP->beSigned(Persona1);
+            Persona1.executeForm(*RSP);
+            std::cout << std::endl;
+
+            delete RSP;
             std::cout  << std::endl;
         
-            rrf = someRandomIntern.makeForm("food request", "Ameijoa");
+            RSP = someRandomIntern.makeForm("food request", "Ameijoa");
         
     }  catch(const std::exception& e) {
         
-        std::cout << "Erro: " << e.what() << std::endl << std::endl;
+        std::cout << "Error: " << e.what() << std::endl << std::endl;
     
     }
     

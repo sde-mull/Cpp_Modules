@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 23:59:20 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:36:09 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:56:33 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ std::string RobotomyRequestForm::getTarget(void) const
 
 void RobotomyRequestForm::task() const
 {
-	std::string noises = "* drilling noises *";
-	std::cout << noises << std::endl;
+	std::cout << "* drilling noises *" << std::endl;
 	struct timeval tm;
 	gettimeofday(&tm, NULL);
 	srandom(tm.tv_usec % 1000);

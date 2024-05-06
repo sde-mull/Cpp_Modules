@@ -14,12 +14,12 @@
 
 Intern::Intern(void): AForm()
 {
-    std::cout << "Intern Constructor!" << std::endl;
+    std::cout << "Intern  Default Constructor!" << std::endl;
 }
 
 Intern::Intern( Intern const & src): AForm(src)
 {
-    std::cout << "Intern Clonned!" << std::endl;
+    std::cout << "Intern Copy Constructor!" << std::endl;
     
     *this = src;
 }
@@ -38,7 +38,7 @@ Intern & Intern::operator=(Intern const & rhs)
 
 const char* Intern::UnknowFormException::what() const throw()
 {
-    return ("This Form don't exist!");
+    return ("This Form doesn't exist!");
 }
 
 AForm * Intern::makeForm(std::string formName, std::string target)
