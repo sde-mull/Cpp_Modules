@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   EasyFind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 22:02:58 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/03/11 23:01:30 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/07 23:29:40 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+#include <cmath>
 
 class IntegerNotFoundException : public std::exception
 {
