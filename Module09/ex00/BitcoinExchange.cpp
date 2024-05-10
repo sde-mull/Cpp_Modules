@@ -6,246 +6,332 @@
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:31 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/04/22 19:50:40 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/11 00:22:18 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() {}
-
-BitcoinExchange::BitcoinExchange(char *file)
-{
-    std::ifstream	readFile;
-	std::string		line;
-
-    readFile.open(file);
-	
-	if (readFile.fail())
-	{
-        throw std::invalid_argument("Error: could not open file.");
-		return ;
-	}
-    if (readFile.is_open())
-	{
-		while (getline(readFile, line))
-		{
-            this->divideInput(line);
-		}
-		readFile.close();
-	}
-
+BitcoinExchange::BitcoinExchange() : _flagEverythingGood(false){
+    std::cout << "BitcoinExchange default constructor called" << std::endl;
 }
 
-BitcoinExchange::~BitcoinExchange() {}
+BitcoinExchange::~BitcoinExchange(){
+    std::cout << "BitcoinExchange destructor called" << std::endl;
+}
 
-BitcoinExchange::BitcoinExchange( BitcoinExchange const & src)
-{
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &src){
+    std::cout << "BitcoinExchange Copy constructor called" << std::endl;
     *this = src;
 }
 
-BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & rhs)
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 {
-    if (this != &rhs)
-    {
-        this->bitcoin.clear();
+	std::cout << "BitcoinExchange Assignment operator called" << std::endl;
+	if (this != &src){
+        this->_flagEverythingGood = src.getFlagEverythingGood();
+        this->_Database = src.getDatabase();
+        this->_InputValues = src.getInputValues();
+	}
+	return (*this);
+}
 
-        for (std::map<int, std::map<std::string, std::string> >::const_iterator it = rhs.bitcoin.begin(); it != rhs.bitcoin.end(); ++it)
-        {
-            std::map<std::string, std::string> new_map;
-            for (std::map<std::string, std::string>::const_iterator it2 = it->second.begin(); it2 != it->second.end(); ++it2)
-            {
-                new_map[it2->first] = it2->second;
-            }
-            this->bitcoin[it->first] = new_map;
+bool BitcoinExchange::getFlagEverythingGood() const{
+    return (this->_flagEverythingGood);
+}
+
+std::deque<std::deque<double> > BitcoinExchange::getDatabase() const {
+    return (this->_Database);
+}
+
+std::deque<double>              BitcoinExchange::getInputValues() const{
+    return (this->_InputValues);
+}
+
+void BitcoinExchange::StrTrim(std::string& str){
+
+    size_t start = str.find_first_not_of(" \t\r\n");
+    if (start != std::string::npos)
+        str = str.substr(start);
+
+    size_t end = str.find_last_not_of(" \t\r\n");
+    if (end != std::string::npos)
+        str = str.substr(0, end + 1);
+}
+
+bool    BitcoinExchange::EditDatabaseFile(std::ifstream& File, std::deque<std::deque<double> >& Container, std::string delimiter){
+    
+    std::string line;
+    std::string date;
+    std::string value;
+    size_t pos = 0;
+    unsigned int index = 1;
+
+    while (std::getline(File, line)){
+        if (line == "date,exchange_rate" && index == 1){
+            index++;
+            continue;
         }
+        else if (line != "date,exchange_rate" && index == 1)
+            throw std::invalid_argument("The first line of the database must be \"date,exchange_rate\"");
+        pos = line.find(delimiter);
+        if (pos == std::string::npos)
+            return false;
+        date = line.substr(0, pos);
+        value = line.substr(pos + delimiter.length());
+        StrTrim(date);
+        StrTrim(value);
+        SavingValuesDatabaseContainer(date, Container, value, index);
+        index++;
+    }
+    if (this->_flagEverythingGood)
+            return false;
+    return true;
+}
+
+void    BitcoinExchange::RunInputFile(std::ifstream& File, std::deque<double> &Container, std::string delimiter){
+
+    std::string line;
+    std::string date;
+    std::string value;
+    unsigned int index = 1;
+    int DaysOnMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    while (std::getline(File, line)){
+        if (CheckWhileString(date, line, value, index, delimiter)){
+            index++;
+            continue;
+        }
+        ConvertToDouble(date, value, Container, index);
+        PrintMessage(Container, DaysOnMonth, index);
+        Container.clear();
+        index++;
+    }
+}
+
+void    BitcoinExchange::PrintMessage(std::deque<double> &Container, int *DaysOnMonth, unsigned int &index){
+    
+    if (Container[3] > 1000){
+        std:: cerr << "Error: too large a number on line " <<  index << std::endl;
+        return ;
+    }
+    else if (Container[3] < 0){
+        std:: cerr << "Error: not a positive number on line " <<  index << std::endl;
+        return ;
+    }
+    if (!CheckDate(Container, DaysOnMonth)){
+        std:: cerr << "Error: Bad date on line " <<  index << std::endl;
+        return ;
+    }
+
+    int positionDB = SearchDatabase(Container, this->_Database);
+    
+    
+    std::cout << Container[0] << "-";
+    if (Container[1] < 10)
+        std::cout << "0";
+    std::cout << Container[1] << "-";
+    if (Container[2] < 10)
+        std::cout << "0";
+    std::cout << Container[2];
+    std::cout  << " => " << Container[3] << " = " << Container[3] * this->_Database[positionDB][3] << std::endl;
+}
+
+int     BitcoinExchange::SearchDatabase(std::deque<double> &Container, std::deque<std::deque<double> > &Database){
+
+    unsigned int index = 0;
+
+    while ((Container[0] > Database[index][0]) && index < Database.size())
+        index++;
+    while ((Container[1] > Database[index][1]) && index < Database.size())
+        index++;
+    while ((Container[2] > Database[index][2]) && index < Database.size() && Container[1] == Database[index][1])
+        index++;
+    
+    if (Container[2] != Database[index][2])
+        index--;
+    return (index);
+
+}
+
+bool    BitcoinExchange::CheckDate(std::deque<double> &Container, int *DaysOnMonth){
+    
+    if (isLeapYear(Container[0]))
+        DaysOnMonth[1] = 29;
+    else
+        DaysOnMonth[1] = 28;
+
+    if (Container[1] > 12 || Container[1] < 1)
+        return false;
+    
+    if (Container[2] > DaysOnMonth[static_cast<int>(Container[1]) - 1] || Container[2] < 1)
+        return false;
+    return true;
+}
+
+bool BitcoinExchange::isLeapYear(int year) {
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            return (year % 400 == 0);
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
+void    BitcoinExchange::ConvertToDouble(std::string date, std::string value, std::deque<double> &Container, unsigned int index){
+
+    std::deque<std::string> DividedValues;
+    double Conversion;
+
+    DividedValues = ft_split(date, "-");
+    
+    std::deque<std::string>::iterator it = DividedValues.begin();
+    
+    while (it != DividedValues.end()){
+        Conversion = string_to_double(*it, index);
+        Container.push_back(Conversion);
+        it++;
     }
     
-    return *this;
+    Container.push_back(string_to_double(value, index));
 }
 
-float searchDataBase(std::string date, float bitcoin)
-{
-    std::ifstream	readFile;
-	std::string		line;
-    std::size_t     found;
-
-    while (1)
-    {
-        readFile.open("data.csv");
-	
-	    if (readFile.fail())
-	    {
-            throw std::invalid_argument("Error: could not open file.");
-	    }
-
-        if (readFile.is_open())
-        {
-            while (getline(readFile, line))
-            {
-                found = line.find(date);
-                if (found != std::string::npos)
-                {
-                    found = line.find(',');
-                    if (found == std::string::npos)
-                        throw std::invalid_argument("Erro: database is not okey!");
-                    return (bitcoin * std::atof(line.substr(found+1, line.length()).c_str()));
-                }
-            }
-            readFile.close();
-        }
-        if (date.length() < 1)
-        {
-            throw std::invalid_argument("Error: can find ");
-            return 0;
-        }
-        
-        char i = date[date.length() - 1];
-        date = date.substr(0, date.length()-1).c_str();
-        if (i > '0' && i <= '9')
-        {
-            i--;
-            date.push_back(i);
-        }
-    }
-}
-
-void    BitcoinExchange::show(void)
-{
-    std::map<int, std::map<std::string, std::string> >::iterator it;
+bool BitcoinExchange::CheckWhileString(std::string &date, std::string &line, std::string &value, unsigned int &index, std::string delimiter){
     
-    std::cout << "Size: " << this->bitcoin.size() << std::endl;
-
-    for (it = this->bitcoin.begin(); it != this->bitcoin.end(); ++it) 
-    {
-        if (it->first == 0)
-            ++it;
-        
-        std::map<std::string, std::string> map = it->second;
-
-        std::string data = it->second["data"];
-        std::string value = it->second["value"];
-
-        if (value == "" || data == "Error: bad input")
-        {
-            std::cout << data;
-            if (data == "Error: bad input")
-                std::cout << " => " << value;
-            std::cout << std::endl;
-        }
-        else
-        {
-            std::cout << data << " => ";
-
-            for (size_t i = 0; i < value.length(); i++)
-            {
-                if (value[i] >= '0' && value[i] <= '9')
-                    std::cout << value[i];
-            }
-            float result = searchDataBase(data, std::atof(value.c_str()));
-            if (result >= 1000000)
-                std::cout << " = " << std::fixed << result << std::endl;
-            else
-                std::cout << " = " << result << std::endl;
-
-        }
+    size_t pos = 0;
+    
+    if (line == "date | value" && index == 1){
+        return true;
     }
+    else if (line != "date | value" && index == 1)
+        throw std::invalid_argument("The first line of the input file must be \"date | value\"");
+    pos = line.find(delimiter);
+    if (pos == std::string::npos){
+        std:: cerr << "Error: bad input on line " <<  index <<  " => " << line << std::endl;
+        return true;
+    }
+    date = line.substr(0, pos);
+    value = line.substr(pos + delimiter.length());
+    StrTrim(date);
+    StrTrim(value);
+    if (value.length() == 0 || date.length() == 0 || value.find_first_not_of(" \t") || date.find_first_not_of(" \t")){
+        std:: cerr << "Error: bad input on line " <<  index <<  " => " << line << std::endl;
+        return true;
+    }
+    return false;
 }
 
-std::string validDate(std::string date)
-{
-    std::size_t found;
-    std::string dateAux;
-    std::string aux;
-    int         i = 0;
-    double      dateNumber;
-    double      year;
-    double      month;
-    double      day;
+void BitcoinExchange::SavingValuesDatabaseContainer(std::string date, std::deque<std::deque<double> >& Container, std::string Value, unsigned int index){
+    
+    std::deque<std::string> DividedValues;
+    std::deque<double> YearMonthDayValue;
+    double Conversion;
 
-    dateAux = date;
-    found = dateAux.find("-");
-    int startFound = 0;
-    if (found == std::string::npos)
-        return ("Error: bad input");
-    while (i < 3)
-    {
-        i++;
-        aux = date.substr(startFound, found);
-        if ((i == 1 && aux.length() != 4) || ((i == 2 || i == 3) && aux.length() != 2))
-            return ("Error: bad date!");
-        dateNumber = std::atof(aux.c_str());
-        if (i == 2)
-        {
-            month = dateNumber;
-            if (dateNumber < 1 || dateNumber > 12)
-                return ("Error: bad date!");
-        }
-        if (i == 3)
-        {
-            day = dateNumber;
-            if (dateNumber < 1 || dateNumber > 31)
-                return ("Error: bad date!");
-        }
-        dateAux = date.substr(startFound+found+1, date.length());
-        startFound += found + 1;
-        found = dateAux.find("-");
+    DividedValues = ft_split(date, "-");
+    
+    std::deque<std::string>::iterator it = DividedValues.begin();
+    
+    while (it != DividedValues.end()){
+        Conversion = string_to_double(*it, index);
+        YearMonthDayValue.push_back(Conversion);
+        it++;
     }
-
-    return date;
+    
+    YearMonthDayValue.push_back(string_to_double(Value, index));
+    
+    Container.push_back(YearMonthDayValue);
 }
 
-std::string validValue(std::string value)
+std::deque<std::string> BitcoinExchange::ft_split(std::string src, std::string del)
 {
-    for (unsigned long i = 0; i < value.length() - 1; i++)
+    std::deque<std::string> tokens;
+    size_t pos = 0;
+    size_t len = del.length();
+
+    while((pos = src.find(del)) != std::string::npos)
     {
-        if (!(value[i] >= '0' && value[i] <= '9') &&
-            !(value[i] <= 31 && value[i] >= 0) &&
-            value[i] != '.' && value[0] != '-')
-            return "Error: bad input => ";
+        tokens.push_back(src.substr(0, pos));
+        src.erase(0, pos + len);
     }
+    tokens.push_back(src);
+    return (tokens);
+}
 
-    float	numb = std::atof(value.c_str());
+double BitcoinExchange::string_to_double(const std::string& str, unsigned int index) {
+    std::istringstream iss(str);
+    double value;
 
-    if (numb > 1000)
-        return "Error: too large a number.";
-    else if (numb < 0)
-        return "Error: not a positive number.";
+    if (!(iss >> value) || !iss.eof()) {
+        std:: cerr << "Error: bad input on line " <<  index <<  " => " << str << std::endl;
+        this->_flagEverythingGood = true;
+    }
     return value;
 }
 
-void    BitcoinExchange::divideInput(std::string input)
-{
-    std::size_t found;
-    std::string date;
-    std::string value;
-	
-	found = input.find(" | ");
-  	if (found != std::string::npos)
-  	{
-		date = input.substr(0, found);
-        date = validDate(date);
-        value = validValue(input.substr(found + 3));
+void BitcoinExchange::PrintDoubleArray(std::deque<std::deque<double> > Container) const{
+    for (std::deque<std::deque<double> >::const_iterator outerDequeIt = Container.begin(); outerDequeIt != Container.end(); ++outerDequeIt) {
+        const std::deque<double>& outerDeque = *outerDequeIt;
+
+        std::cout << "line: "; 
         
-	    if (date.find("Error") != std::string::npos)
-            value = "";
-        else if (value.find("Error") != std::string::npos)
-        {
-            date = value;
-            value = "";
-            if (date.find("bad input") != std::string::npos)
-                value = input;
+        for (std::deque<double>::const_iterator innerDequeIt = outerDeque.begin(); innerDequeIt != outerDeque.end(); ++innerDequeIt) {
+            double value = *innerDequeIt;
+
+            std::cout << value << " ";
         }
-  	}
-    else
-    {
-        date = "Error: bad input";
-        value = input;
+        std::cout << std::endl;
     }
+}
 
-    std::map<std::string, std::string> dados_bitcoin;
-    dados_bitcoin.insert(std::make_pair("data", date));
-    dados_bitcoin.insert(std::make_pair("value", value));
+void BitcoinExchange::PrintSingleArray(std::deque<double> container){
+    std::deque<double>::iterator it = container.begin();
+    
+    std::cout << "Element: ";
+    while (it != container.end()){
+        std::cout << *it << " ";
+        it++;
+    }
+    std::cout << std::endl;
+}
 
-    this->bitcoin.insert(std::make_pair(this->bitcoin.size(), dados_bitcoin));
+void BitcoinExchange::SaveDatabase( void ){
+
+    std::ifstream ReadFile_Database;
+
+    ReadFile_Database.open(DATABASE);
+
+    if (ReadFile_Database.fail()){
+        throw std::invalid_argument("Error: Could not open Database.\nCheck if the file has the correct name");
+    }
+    
+    if (!EditDatabaseFile(ReadFile_Database, this->_Database, ",")){
+        throw std::invalid_argument("Error: The Database was received in an incorrect form");
+    }
+    
+    ReadFile_Database.close();
+}
+
+void BitcoinExchange::PrintScreen(char *file){
+    
+    std::ifstream ReadInputFile;
+
+    ReadInputFile.open(file);
+
+    if (ReadInputFile.fail()){
+        throw std::invalid_argument("Error: Could not open input file.\nCheck if the file has the correct name");
+    }
+    
+    RunInputFile(ReadInputFile, this->_InputValues, "|");
+    
+    ReadInputFile.close();
+    //PrintDoubleArray(this->_Database);
+}
+
+
+const char* WrongNumberOfArguments::what() const throw()
+{
+	return ("Error: Wrong Number of arguments\nUsage: ./btc file");
 }
