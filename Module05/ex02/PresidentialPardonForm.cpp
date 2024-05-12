@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 00:01:07 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:15:14 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:53:49 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ std::string PresidentialPardonForm::getTarget(void) const
 	return (this->_target);
 }
 
-void PresidentialPardonForm::task() const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << executor.getName() << std::endl;
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

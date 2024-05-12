@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:16:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/06 18:54:38 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:49:50 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void			AForm::execute(Bureaucrat const &executor) const
 	if (this->_sign && this->_gradeExecute > executor.getGrade())
 	{
 		std::cout << executor.getName() << " executed " << getName() << std::endl;
-		task();
+		
 	}
 	else
 	{

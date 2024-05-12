@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 23:59:20 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/06 18:56:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:54:21 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ std::string RobotomyRequestForm::getTarget(void) const
 	return (this->_target);
 }
 
-void RobotomyRequestForm::task() const
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << executor.getName() << std::endl;
 	std::cout << "* drilling noises *" << std::endl;
 	struct timeval tm;
 	gettimeofday(&tm, NULL);

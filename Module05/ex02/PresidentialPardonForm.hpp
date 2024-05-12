@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 00:01:19 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:31:10 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:48:23 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PresidentialPardonForm : virtual public AForm
 
 		std::string getTarget(void) const;
 
-		virtual void task() const;
+		virtual void	execute(Bureaucrat const & executor) const;
 };
 
 #endif

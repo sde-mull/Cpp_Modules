@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 23:59:33 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/06 18:56:41 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:47:31 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class RobotomyRequestForm : virtual public AForm
 
 		std::string getTarget(void) const;
 
-		virtual void task() const;
+		virtual void	execute(Bureaucrat const & executor) const;
 };
 
 #endif

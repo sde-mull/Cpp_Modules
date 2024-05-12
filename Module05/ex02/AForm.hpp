@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:17:15 by sde-mull          #+#    #+#             */
-/*   Updated: 2023/09/25 02:31:01 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:46:26 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ class AForm
 		int				getGradeExecute(void) const;
 
 		void			beSigned(Bureaucrat &bureau);
-
-		virtual	void	task() const = 0;
-
-		void			execute(Bureaucrat const & executor) const;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class	GradeTooHighException : public std::exception
 		{

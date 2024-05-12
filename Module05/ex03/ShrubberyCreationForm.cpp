@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 23:47:02 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/06 18:56:55 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:54:29 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ std::string ShrubberyCreationForm::getTarget(void) const
 	return (this->_target);
 }
 
-void ShrubberyCreationForm::task() const
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << executor.getName() << std::endl;
+	
 	std::ofstream	file;
 	std::string		file_to_write;
 	file_to_write = this->_target;

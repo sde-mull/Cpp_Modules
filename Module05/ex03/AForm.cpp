@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 17:16:50 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/06 18:56:04 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/12 19:04:28 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ AForm::AForm(void) : _name(""), _sign(false), _gradeSign(0), _gradeExecute(0)
 AForm::AForm(std::string name, int gradeSign, int gradeExecute) : _name(name), _sign(false), _gradeSign(gradeSign), _gradeExecute(gradeExecute)
 {
 	std::cout << name << " AForm parametric constructor called" << std::endl;
-	if (gradeSign >= 151 || gradeExecute >= 151)
+	if (gradeSign > 150 || gradeExecute > 150)
 		throw GradeTooLowException();
-	else if (gradeSign <= 0 || gradeExecute <= 0)
+	else if (gradeSign < 1 || gradeExecute < 1)
 		throw GradeTooHighException();							
 }
 
@@ -126,7 +126,7 @@ void			AForm::execute(Bureaucrat const &executor) const
 	if (this->_sign && this->_gradeExecute > executor.getGrade())
 	{
 		std::cout << executor.getName() << " executed " << getName() << std::endl;
-		task();
+		
 	}
 	else
 	{

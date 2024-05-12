@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                         :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 13:12:32 by rteles            #+#    #+#             */
-/*   Updated: 2023/02/21 23:01:47 by rteles           ###   ########.fr       */
+/*   Created: 2024/05/12 18:42:02 by sde-mull          #+#    #+#             */
+/*   Updated: 2024/05/12 19:40:37 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ class Intern : virtual public AForm
 
         AForm * makeForm(std::string formName, std::string target);
         
-        virtual void task() const;
+        virtual void	execute(Bureaucrat const & executor) const;
 
-        class UnknowFormException : public std::exception
+        class NoFormException : public std::exception
         {
             public:
                 virtual const char* what() const throw();
