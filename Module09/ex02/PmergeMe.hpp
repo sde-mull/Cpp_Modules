@@ -6,7 +6,7 @@
 /*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/04/22 19:45:54 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/18 00:11:12 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,33 @@
 # define PmergeMe_HPP
 
 #include <iostream>
-#include <list>
-#include <vector>
-#include <algorithm>
-#include <ctime>
+#include <sstream>
+#include <fstream>
+#include <cstdlib>
+#include <deque>
+#include <string>
+#include <sstream>
+#include <stdexcept>
+#include <stack>
 
 class PmergeMe
 {
     private:
-        std::list<unsigned int>     _list;
-        std::vector<unsigned int>   _vector;
-        double                      _timeList;
-        double                      _timeVector;
-        PmergeMe();
-        void    sortedList(void);
-        void    sortedVector(void);
+        std::stack<int> _Numbers;
+        std::string     _Expression;
 
     public:
-        PmergeMe(char **numbers);
+        PmergeMe();
+        PmergeMe(char *expression);
         PmergeMe( PmergeMe const & src);
         ~PmergeMe();
 
         PmergeMe & operator=(PmergeMe const & rhs);
 
-        void    show(char **argv);
+        void    Start( void );
+        void    printStack( void ) const;
+        int     Calculate(int first, int second, char operation);
+
 };
 
 #endif
