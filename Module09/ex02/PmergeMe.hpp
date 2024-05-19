@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/18 00:11:12 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/18 23:21:52 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,25 @@
 #include <sstream>
 #include <stdexcept>
 #include <stack>
+#include <map>
 
 class PmergeMe
 {
     private:
-        std::stack<int> _Numbers;
-        std::string     _Expression;
+        std::map<int, bool> _CheckRepeatedNumbers;
+        std::vector<char *>   _SavingValues;
 
     public:
         PmergeMe();
-        PmergeMe(char *expression);
+        PmergeMe(int argc, char **argv);
         PmergeMe( PmergeMe const & src);
         ~PmergeMe();
 
         PmergeMe & operator=(PmergeMe const & rhs);
 
-        void    Start( void );
-        void    printStack( void ) const;
-        int     Calculate(int first, int second, char operation);
+        std::vector<char *> GetSavingValues( void ) const;
+        
+        template <typename Container> void PrintList( const Container& container ) const;
 
 };
 
