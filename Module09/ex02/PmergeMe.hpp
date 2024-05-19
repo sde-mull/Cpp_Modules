@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/18 23:21:52 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/05/20 00:43:47 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@
 #include <stdexcept>
 #include <stack>
 #include <map>
+#include <vector>
+#include <cctype>
+#include <climits>
+#include <cerrno>
+#include <iomanip>
+#include <list> 
 
 class PmergeMe
 {
     private:
-        std::map<int, bool> _CheckRepeatedNumbers;
-        std::vector<char *>   _SavingValues;
+        std::map<int, bool>     _CheckRepeatedNumbers;
+        std::vector<char *>     _SavingValues;
+        std::vector<int>        _ContainerInt;
+        std::list<int>          _ContainerList;
 
     public:
         PmergeMe();
@@ -38,9 +46,33 @@ class PmergeMe
 
         PmergeMe & operator=(PmergeMe const & rhs);
 
+        //getters functions
         std::vector<char *> GetSavingValues( void ) const;
+        std::vector<int>    GetContainerInt(void) const;
         
-        template <typename Container> void PrintList( const Container& container ) const;
+        //prints functions
+        void PrintVectorChar( void ) const;
+        void PrintVectorInt( void ) const;
+        void PrintListInt( void ) const;
+
+        //Other
+        void Run ( void );
+        void Parsing( void );
+        void PushVectorInt(char *value);
+
+        std::vector<std::string> ft_split(std::string src, std::string del);
+        void StrTrim(std::string& str);
+        bool CheckIntRange(std::string integer);
+
+        void MergeInsertionAlgorithmVector(std::vector<int> &Container);
+        void InsertionVector(std::vector<int> &Container);
+        void MergeVector(std::vector<int> &Container, const std::vector<int> &Left, const std::vector<int> &Right);
+
+        void MergeInsertionAlgorithmList(std::list<int> &Container);
+        void InsertionList(std::list<int> &Container);
+        void MergeList(std::list<int> &Container, const std::list<int> &Left, const std::list<int> &Right);
+
+        void CopyVectorToList( void );
 
 };
 
