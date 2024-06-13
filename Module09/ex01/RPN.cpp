@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 21:28:31 by sde-mull          #+#    #+#             */
-/*   Updated: 2024/05/11 02:46:58 by sde-mull         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:05:02 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void RPN::Start( void ){
 
     int checkSpace = 1;
 
-    if (this->_Expression.size() < 2 && (this->_Expression[0] < '0' || this->_Expression[0] > '9'))
+    if (this->_Expression.size() <= 4)
         throw std::invalid_argument("Error");
     
     for (std::string::iterator it = this->_Expression.begin(); it != this->_Expression.end(); it++){
@@ -81,6 +81,11 @@ void RPN::Start( void ){
         if (*it == ' ')
             checkSpace = 1;
     }
+
+    if (this->_Numbers.size() > 1)
+        throw std::invalid_argument("Error");
+    
+    
     std::cout << "Result: " << this->_Numbers.top() << std::endl;
 
 }
